@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ddd;
+      }
+
+      div,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      h1 {
+        color: #666;
+        text-shadow: 1px 1px #fff;
+        text-align: center;
+        font-size: 3em;
+      }
+
+      div,
+      ul,
+      li,
+      section,
+      p {
+        border: solid 1px #ccc;
+        background-color: #fff;
+      }
+
+      div,
+      ul,
+      section {
+        position: relative;
+      }
+
+      div {
+        width: 900px;
+        margin: auto;
+        padding: 1.5em;
+        display: flex;
+      }
+
+      ul,
+      section {
+        width: 100%;
+        margin-left: 1.5em;
+      }
+
+      ul:first-child {
+        margin: 0;
+      }
+
+      li,
+      p {
+        margin: 1.5em;
+        padding: 1.5em;
+      }
+
+      div:before,
+      ul:before,
+      section::before {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        line-height: 1;
+      }
+
+      div::before {
+        content: 'div';
+      }
+
+      ul::before {
+        content: 'ul';
+      }
+
+      section::before {
+        content: 'section';
+      }
+
+      .now {
+        background-color: khaki;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>DOM Traversal</h1>
+    <div class="clearfix">
+      <ul class="box">
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+      <ul>
+        <li>li</li>
+        <li>li</li>
+        <li id="Now" class="now">li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+      <ul class="box">
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+      <ul>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+      <section>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+      </section>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $('#Now').click(function(){
+        // console.log($(this));
+        // $(this).next().css('background-color', 'yellowgreen');
+        // $(this).prev().prev().css('background-color', 'yellowgreen');
+        // $(this).prevAll().css('background-color', 'yellowgreen');
+        // $(this).nextAll().css('background-color', 'yellowgreen');
+        // $(this).siblings().css('background-color', 'yellowgreen');
+        // 在程式的世界中，0 代表第一個順位
+        // $(this).siblings().eq(0).css('background-color', 'yellowgreen');
+        // $(this).siblings().first().css('background-color', 'yellowgreen');
+        // $(this).siblings().last().css('background-color', 'yellowgreen');
+        // $(this).parents().css('background-color', 'yellowgreen');
+        // $(this).parent().siblings('.box').css('background-color', 'yellowgreen');
+        $(this).parent().siblings().last().find('p').eq(2).css('background-color', 'yellowgreen');
+      });
+    </script>
+  </body>
+
+</html>
